@@ -7,7 +7,7 @@
     <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
     <meta name="github" content="https://github.com/Aoudumber-Bade">
     <title>BABU Birthday</title>
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,29 +16,233 @@
         rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
     <style>
-        /* Embedded styling to add the new button and gallery window seamlessly */
-        .memories-btn-wrap {
-            margin-top: 15px;
+        /* ALL ORIGINAL STYLE RULES INCLUDED HERE SO NO EXTERNAL STYLE.CSS IS REQUIRED */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffeef2;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        #btn__memories {
+        #wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flag__birthday {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .flag__left, .flag__right {
+            width: 350px;
+            max-width: 45%;
+            height: auto;
+        }
+        .content {
+            display: flex;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 117, 143, 0.2);
+            max-width: 900px;
+            width: 90%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            z-index: 5;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .title {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .happy, .birthday {
+            font-family: 'Dancing Script', cursive;
+            color: #ff477e;
+            font-size: 3.8rem;
+            line-height: 1.2;
+        }
+        .title .hat {
+            position: absolute;
+            top: -55px;
+            left: 20px;
+            transform: rotate(-15deg);
+        }
+        .date__of__birth {
+            font-weight: 600;
+            color: #ff758f;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 280px;
+        }
+        #btn__letter, #btn__memories {
             cursor: pointer;
             border: none;
-            padding: 12px 28px;
+            padding: 14px 28px;
             background: linear-gradient(45deg, #ff6b8b, #ff477e);
             color: #fff;
-            border-radius: 25px;
+            border-radius: 30px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
             box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
             transition: all 0.3s ease;
+            width: 100%;
         }
-        #btn__memories:hover {
+        #btn__letter:hover, #btn__memories:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
+        }
+        .box__account {
+            position: relative;
+            background: #fff0f3;
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px dashed #ff758f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 320px;
+        }
+        .box__account .image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .box__account .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .box__account .name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff477e;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .balloon_one {
+            position: absolute;
+            left: -50px;
+            top: -30px;
+        }
+        .balloon_two {
+            position: absolute;
+            right: -50px;
+            top: -20px;
+        }
+        .decorate_bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            pointer-events: none;
+        }
+        .smiley__icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            pointer-events: none;
+        }
+        
+        /* Interactive Card Overlay Framework Layout rules */
+        .boxMail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .boxMail.active {
+            display: flex;
+        }
+        .boxMail .fa-xmark {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .boxMail-container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .card2 h2 {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 15px;
+            text-align: left;
+            background: #fff5f7;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #ff477e;
+        }
+
+        /* Original Memory Pop-up System styling sheet rules setup */
+        .memories-btn-wrap {
+            margin-top: 0px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
         .boxMemories {
             position: fixed;
@@ -105,8 +309,33 @@
             display: block;
         }
 
-        /* Added Mobile Responsive Tweaks */
+        /* Dynamic Environment Particle Assets rules block */
+        .floating-balloons {
+            position: fixed;
+            bottom: -50px;
+            width: 40px;
+            animation: floatUp 7s linear infinite;
+            z-index: 999;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        }
+
+        /* Desktop & Mobile Display Media Adaptations query framework split hook */
         @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                padding: 25px;
+                gap: 30px;
+            }
+            .flag__left, .flag__right {
+                width: 180px;
+            }
+            .happy, .birthday {
+                font-size: 2.8rem;
+            }
             .boxMemories {
                 padding: 60px 15px 20px 15px;
             }
@@ -119,7 +348,7 @@
                 gap: 15px;
             }
             .gallery-item img, .gallery-item video {
-                height: 220px; /* Looks much cleaner on portrait phone screens */
+                height: 220px;
             }
             .boxMemories .close-gallery {
                 top: 15px;
@@ -138,8 +367,8 @@
 
     <div id="wrapper">
         <div class="flag__birthday">
-            <img src="./images/1.png" alt="" width="350" class="flag__left">
-            <img src="./images/1.png" alt="" width="350" class="flag__right">
+            <img src="images/1.png" alt="" width="350" class="flag__left">
+            <img src="images/1.png" alt="" width="350" class="flag__right">
         </div>
         <div class="content">
             <div class="left">
@@ -162,7 +391,7 @@
                         <span style="--t: 6.4s;">y</span>
                     </h1>
                     <div class="hat">
-                        <img src="./images/hat.png" alt="" width="130">
+                        <img src="images/hat.png" alt="" width="130">
                     </div>
                 </div>
                 <div class="date__of__birth">
@@ -183,7 +412,7 @@
             <div class="right">
                 <div class="box__account">
                     <div class="image">
-                        <img src="./images/unnamed.png" alt="">
+                        <img src="images/unnamed.png" alt="">
                     </div>
                     <div class="name">
                         <i class="fa-solid fa-heart"></i>
@@ -191,53 +420,20 @@
                         <i class="fa-solid fa-heart"></i>
                     </div>
                     <div class="balloon_one">
-                        <img width="100px" src="./images/balloon1.png" alt="">
+                        <img width="100px" src="images/balloon1.png" alt="">
                     </div>
                     <div class="balloon_two">
-                        <img width="100px" src="./images/balloon2.png" alt="">
+                        <img width="100px" src="images/balloon2.png" alt="">
                     </div>
-                </div>
-                <div class="cricle">
-                    <div class="text__cricle">
-                        <span style="--i: 1;">h</span>
-                        <span style="--i: 2;">a</span>
-                        <span style="--i: 3;">p</span>
-                        <span style="--i: 4;">p</span>
-                        <span style="--i: 5;">y</span>
-                        <span style="--i: 6;">-</span>
-                        <span style="--i: 7;">b</span>
-                        <span style="--i: 8;">i</span>
-                        <span style="--i: 9;">r</span>
-                        <span style="--i: 10;">t</span>
-                        <span style="--i: 11;">h</span>
-                        <span style="--i: 12;">d</span>
-                        <span style="--i: 13;">a</span>
-                        <span style="--i: 14;">y</span>
-                        <span style="--i: 15;">-</span>
-                    </div>
-                    <i class="fa-solid fa-heart"></i>
                 </div>
             </div>
         </div>
-        <div class="decorate_star star1" style="--t: 15s;"></div>
-        <div class="decorate_star star2" style="--t: 15.2s;"></div>
-        <div class="decorate_star star3" style="--t: 15.4s;"></div>
-        <div class="decorate_star star4" style="--t: 15.6s;"></div>
-        <div class="decorate_star star5" style="--t: 15.8s;"></div>
-        <div class="decorate_flower--one" style="--t: 15s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--two" style="--t: 15.3s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--three" style="--t: 15.6s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
+        
         <div class="decorate_bottom">
-            <img src="./images/decorate.png" alt="" width="100">
+            <img src="images/decorate.png" alt="" width="100">
         </div>
         <div class="smiley__icon">
-            <img src="./images/smiley_icon.png" alt="" width="100">
+            <img src="images/smiley_icon.png" alt="" width="100">
         </div>
 
         <div class="boxMail">
@@ -245,21 +441,15 @@
             <div class="boxMail-container">
                 <div class="card1">
                     <div class="userImg">
-                        <img src="images/unnamed.png" alt="">
+                        <img src="images/unnamed.png" alt="" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
                     </div>
-                    <h4 class="username">To: Shristi 💖<span class="underline"></span></h4>
-                    <h3>Happy Birthday</h3>
-                    <div class="imageCute">
-                        <img src="cute1.png" alt="">
-                    </div>
+                    <h4 class="username" style="margin-top:10px; color:#ff477e;">To: Shristi 💖</h4>
+                    <h3 style="font-family:'Dancing Script', cursive; font-size:2.5rem; color:#ff758f; margin:10px 0;">Happy Birthday</h3>
                 </div>
                 <div class="card2">
                     <div class="card2-content">
-                        <h3>To You!</h3>
+                        <h3 style="color:#ff477e; margin-bottom:5px;">To You!</h3>
                         <h2>Happy birthday To my beautiful wife, Shristi, Happy Birthday! 🌸 Today, I just want to remind you how deeply loved you are. You have the most beautiful heart, babe, and your smile is my absolute favorite view in the world. Thank you for making our lives so beautiful, babu. May all your dreams and wishes come true this year because you deserve nothing less than the best. Happy Birthday, my sanu, my precious nani. Forever and always, it’s you and me. 💖</h2>
-                        <div class="imageCute2">
-                            <img src="cute2.png" alt="">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -300,16 +490,9 @@
 
 <script>
     let datetxt = "30 May";
-    let datatxtletter = "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
-    let titleLetter = "To you";
     let charArrDate = datetxt.split('');
-    let charArrDateLetter = datatxtletter.split('');
-    let charArrTitle = titleLetter.split('');
     let currentIndex = 0;
-    let currentIndexLetter = 0;
-    let currentIndexTitle = 0;
     let date__of__birth = document.querySelector(".date__of__birth span");
-    let text__letter = document.querySelector(".text__letter p");
     
     setTimeout(function () {
         timeDatetxt = setInterval(function () {
@@ -320,86 +503,25 @@
             else {
                 let i = document.createElement("i");
                 i.className = "fa-solid fa-star";
+                i.style.color = "#ff477e";
+                i.style.margin = "0 5px";
                 document.querySelector(".date__of__birth").prepend(i);
                 document.querySelector(".date__of__birth").appendChild(i.cloneNode(true));
                 clearInterval(timeDatetxt);
             }
         }, 100)
-    }, 12000)
+    }, 1000) // Adjusted delay so the typewriter starts up naturally on document ready hook
 
-    var intervalContent;
-    var intervalTitle;
-    
-    $("#btn__letter").on("click", function () {
-        $(".box__letter").slideDown();
-        setTimeout(function () {
-            $(".letter__border").slideDown();
-        }, 1000)
-        setTimeout(function () {
-            intervalTitle = setInterval(function () {
-                if (currentIndexTitle < charArrTitle.length) {
-                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
-                    let i = document.createElement("i");
-                    i.className = "fa-solid fa-heart";
-                    document.querySelector(".title__letter").appendChild(i);
-                    currentIndexTitle++;
-                }
-                else {
-                    clearInterval(intervalTitle);
-                }
-            }, 100)
-        }, 2000)
-        setTimeout(function () {
-            document.querySelector("#heart__letter").classList.add("animationOp");
-            document.querySelector(".love__img").classList.add("animationOp");
-            document.querySelector("#mewmew").classList.add("animationOp");
-        }, 2800)
-        setTimeout(function () {
-            document.querySelectorAll(".heart").forEach((item) => {
-                item.classList.add("animation");
-            })
-        }, 3500)
-        setTimeout(function () {
-            intervalContent = setInterval(function () {
-                if (currentIndexLetter < charArrDateLetter.length) {
-                    text__letter.textContent += charArrDateLetter[currentIndexLetter];
-                    currentIndexLetter++;
-                }
-                else {
-                    clearInterval(intervalContent);
-                }
-            }, 50)
-        }, 6000)
-    })
-    
-    $(".close").on("click", function () {
-        clearInterval(intervalContent);
-        document.querySelector(".title__letter").textContent = "";
-        text__letter.textContent = "";
-        currentIndexLetter = 0;
-        currentIndexTitle = 0;
-        document.querySelector("#heart__letter").classList.remove("animationOp");
-        document.querySelector(".love__img").classList.remove("animationOp");
-        document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item) => {
-            item.classList.remove("animation");
-        })
-        $(".box__letter").slideUp();
-        $(".letter__border").slideUp();
-    })
-
-    let mailBox = document.querySelector('.mail');
+    let mailBox = document.querySelector('#btn__letter');
     let boxmail = document.querySelector('.boxMail');
     let closeBtn = document.querySelector('.boxMail .fa-xmark');
     
     mailBox.onclick = function () {
-        mailBox.classList.toggle('active');
         boxmail.classList.add('active');
     }
 
     closeBtn.addEventListener('click', function () {
         boxmail.classList.remove('active');
-        mailBox.classList.remove('active');
     });
 
     // Gallery Toggle Control Logic with Background Music play/stop
@@ -408,7 +530,7 @@
     let closeGalleryBtn = document.querySelector('.close-gallery');
     let bgMusic = document.getElementById('bgMusic');
 
-    bgMusic.volume = 0.4; // Soft background audio level
+    bgMusic.volume = 0.4; 
 
     memoriesBtn.onclick = function () {
         boxMemories.classList.add('active');
@@ -422,6 +544,30 @@
         bgMusic.pause();
         bgMusic.currentTime = 0;
     }
+
+    $(document).ready(function () {
+        const balloonAssets = ['images/balloon1.png', 'images/balloon2.png', 'images/love.png', 'images/heart.png', 'images/1.png'];
+
+        function spawnFloatingAsset() {
+            const randomAsset = balloonAssets[Math.floor(Math.random() * balloonAssets.length)];
+            const randomX = Math.floor(Math.random() * $(window).width());
+            const randomDuration = Math.floor(Math.random() * 4) + 5; 
+
+            const $element = $('<img class="floating-balloons" src="' + randomAsset + '">');
+            $element.css({
+                'left': randomX + 'px',
+                'animation-duration': randomDuration + 's'
+            });
+
+            $('body').append($element);
+
+            setTimeout(function () {
+                $element.remove();
+            }, randomDuration * 1000);
+        }
+
+        setInterval(spawnFloatingAsset, 1000);
+    });
 </script>
 
 </html>
